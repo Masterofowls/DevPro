@@ -1845,7 +1845,9 @@ textarea.form-input {
   }
 
   .hero-visual,
-  .about-image {
+  .about-image,
+  .skills-left,
+  .projects-left {
     order: -1;
   }
 
