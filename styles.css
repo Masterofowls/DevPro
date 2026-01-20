@@ -1271,11 +1271,24 @@ html[dir="rtl"] .nav-link::after {
    SKILLS PAGE
    =================================== */
 .skills-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
+}
+
+.skills-left {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  width: 100%;
-  padding-bottom: var(--spacing-xl);
+}
+
+.skills-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
 }
 
 .skills-category {
@@ -1475,13 +1488,32 @@ html[dir="rtl"] .nav-link::after {
 /* ===================================
    PROJECTS PAGE
    =================================== */
+.projects-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--spacing-xl);
+  align-items: start;
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
+}
+
+.projects-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.projects-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--spacing-lg);
   width: 100%;
-  padding-bottom: var(--spacing-xl);
-  margin-top: var(--spacing-md);
 }
 
 .project-card {
@@ -1805,6 +1837,8 @@ textarea.form-input {
 @media (max-width: 1024px) {
   .hero-content,
   .about-content,
+  .skills-content,
+  .projects-content,
   .contact-content {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);

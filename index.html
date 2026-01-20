@@ -483,19 +483,32 @@
               <div class="title-underline"></div>
             </div>
             <div class="skills-content">
-              <!-- D3.js Skills Radar Chart -->
-              <div class="skills-visualization">
-                <h3 class="category-title" data-i18n="skillsRadarTitle">
-                  Skill Proficiency
-                </h3>
-                <div id="skillsRadarChart" class="d3-chart-container"></div>
+              <!-- Left Column: Visualizations -->
+              <div class="skills-left">
+                <!-- D3.js Skills Radar Chart -->
+                <div class="skills-visualization">
+                  <h3 class="category-title" data-i18n="skillsRadarTitle">
+                    Skill Proficiency
+                  </h3>
+                  <div id="skillsRadarChart" class="d3-chart-container"></div>
+                </div>
+
+                <!-- D3.js Technology Network Graph -->
+                <div class="skills-visualization">
+                  <h3 class="category-title" data-i18n="skillsVisualization">
+                    Technology Ecosystem
+                  </h3>
+                  <div id="techNetworkGraph" class="d3-chart-container"></div>
+                </div>
               </div>
 
-              <div class="skills-category">
-                <h3 class="category-title" data-i18n="skillsCategoryFrontend">
-                  Frontend
-                </h3>
-                <div class="skills-grid">
+              <!-- Right Column: Skill Categories -->
+              <div class="skills-right">
+                <div class="skills-category">
+                  <h3 class="category-title" data-i18n="skillsCategoryFrontend">
+                    Frontend
+                  </h3>
+                  <div class="skills-grid">
                   <div class="skill-card" data-skill="95">
                     <div class="skill-icon">
                       <svg
@@ -630,13 +643,6 @@
                   <span class="tech-tag">Kubernetes</span>
                 </div>
               </div>
-
-              <!-- D3.js Technology Network Graph -->
-              <div class="skills-visualization">
-                <h3 class="category-title" data-i18n="skillsVisualization">
-                  Technology Ecosystem
-                </h3>
-                <div id="techNetworkGraph" class="d3-chart-container"></div>
               </div>
             </div>
           </div>
@@ -655,15 +661,20 @@
               <div class="title-underline"></div>
             </div>
 
-            <!-- D3.js Project Timeline Visualization -->
-            <div class="project-timeline-viz">
-              <h3 class="timeline-title" data-i18n="projectTimelineTitle">
-                Development Journey
-              </h3>
-              <div id="projectTimeline" class="d3-chart-container"></div>
-            </div>
+            <div class="projects-content">
+              <!-- Left Column: Timeline Visualization -->
+              <div class="projects-left">
+                <div class="project-timeline-viz">
+                  <h3 class="timeline-title" data-i18n="projectTimelineTitle">
+                    Development Journey
+                  </h3>
+                  <div id="projectTimeline" class="d3-chart-container"></div>
+                </div>
+              </div>
 
-            <div class="projects-grid">
+              <!-- Right Column: Project Cards -->
+              <div class="projects-right">
+                <div class="projects-grid">
               <div class="project-card">
                 <div class="project-image">
                   <svg
@@ -871,6 +882,8 @@
                     <span class="tech-badge">GraphQL</span>
                   </div>
                 </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>
