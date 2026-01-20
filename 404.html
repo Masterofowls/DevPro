@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,13 +8,17 @@
       // GitHub Pages SPA redirect handler
       // When accessing /DevPro/about, GitHub returns 404.html
       // This script redirects to index.html with the path preserved
-      (function() {
+      (function () {
         var path = window.location.pathname;
         var query = window.location.search;
-        
+
         // Redirect to index.html, preserving the path for the router
         window.location.replace(
-          window.location.origin + '/DevPro/index.html' + query + '#redirect=' + path
+          window.location.origin +
+            "/DevPro/index.html" +
+            query +
+            "#redirect=" +
+            path,
         );
       })();
     </script>
