@@ -1274,7 +1274,7 @@ html[dir="rtl"] .nav-link::after {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: var(--spacing-xl);
-  align-items: start;
+  align-items: center;
   width: 100%;
   padding-bottom: var(--spacing-xl);
   overflow: visible;
@@ -1488,7 +1488,7 @@ html[dir="rtl"] .nav-link::after {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: var(--spacing-xl);
-  align-items: start;
+  align-items: center;
   width: 100%;
   padding-bottom: var(--spacing-xl);
   overflow: visible;
