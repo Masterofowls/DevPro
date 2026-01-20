@@ -679,11 +679,14 @@ body::before {
   margin: 0 auto;
   padding: var(--spacing-lg) var(--spacing-md);
   min-height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   transform-style: preserve-3d;
   animation: pageContentFadeIn 0.6s ease 0.3s both;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @keyframes pageContentFadeIn {

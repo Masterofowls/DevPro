@@ -1199,67 +1199,8 @@ if (bookContainer) {
     return false;
   }
 
-  // Wheel/scroll navigation disabled - only swipe gestures navigate pages
-  // Users can now freely scroll content without triggering page transitions
-
-  // Touch swipe support for mobile
-  let touchStartElement = null;
-
-  bookContainer.addEventListener(
-    "touchstart",
-    (e) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      touchStartElement = e.target;
-    },
-    { passive: true },
-  );
-
-  bookContainer.addEventListener(
-    "touchend",
-    (e) => {
-      if (isScrolling) return;
-
-      const touchEndX = e.changedTouches[0].clientX;
-      const touchEndY = e.changedTouches[0].clientY;
-      const diffX = touchStartX - touchEndX;
-      const diffY = touchStartY - touchEndY;
-
-      // Check if started within scrollable element
-      if (isScrollableElement(touchStartElement)) {
-        // Only navigate on horizontal swipe if within scrollable element
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 80) {
-          isScrolling = true;
-          const direction = diffX > 0 ? 1 : -1;
-          navigateToPage(currentPage + direction);
-          setTimeout(() => {
-            isScrolling = false;
-          }, 800);
-        }
-        return;
-      }
-
-      // Horizontal swipe (page navigation)
-      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-        isScrolling = true;
-        const direction = diffX > 0 ? 1 : -1;
-        navigateToPage(currentPage + direction);
-        setTimeout(() => {
-          isScrolling = false;
-        }, 800);
-      }
-      // Vertical swipe (page navigation) - only if not in scrollable area
-      else if (Math.abs(diffY) > 50) {
-        isScrolling = true;
-        const direction = diffY > 0 ? 1 : -1;
-        navigateToPage(currentPage + direction);
-        setTimeout(() => {
-          isScrolling = false;
-        }, 800);
-      }
-    },
-    { passive: true },
-  );
+  // All automatic navigation disabled - pages only switch via button clicks
+  // Users can freely scroll and swipe without triggering page transitions
 }
 
 // Interactive Skill Bars with Hover
