@@ -970,15 +970,18 @@ function setLanguage(lang) {
 
 // Update all translatable elements
 function updateTranslations() {
+  // Update elements with text content
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     const translation = t(key);
-
-    if (element.hasAttribute("data-i18n-placeholder")) {
-      element.placeholder = translation;
-    } else {
-      element.textContent = translation;
-    }
+    element.textContent = translation;
+  });
+  
+  // Update elements with placeholder attribute
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    const key = element.getAttribute("data-i18n-placeholder");
+    const translation = t(key);
+    element.placeholder = translation;
   });
 }
 

@@ -378,16 +378,24 @@ languageOptions.forEach((option) => {
     e.stopPropagation();
     const selectedLang = option.dataset.lang;
 
-    // Animate language change
+    // Animate language change - fade out, change, fade in
     anime({
-      targets: "[data-i18n]",
-      opacity: [1, 0.3, 1],
-      duration: 400,
+      targets: "[data-i18n], [data-i18n-placeholder]",
+      opacity: [1, 0.5],
+      duration: 200,
       easing: "easeInOutQuad",
       complete: () => {
         setLanguage(selectedLang);
         updateLanguageFlag();
         languageDropdown.classList.remove("active");
+        
+        // Fade back in
+        anime({
+          targets: "[data-i18n], [data-i18n-placeholder]",
+          opacity: [0.5, 1],
+          duration: 300,
+          easing: "easeOutQuad",
+        });
       },
     });
   });
@@ -1879,7 +1887,7 @@ if ("serviceWorker" in navigator) {
         );
 
         // Initialize translations after service worker registration
-        if (typeof initializeLanguageSystem === 'function') {
+        if (typeof initializeLanguageSystem === "function") {
           initializeLanguageSystem();
         }
 

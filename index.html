@@ -427,7 +427,7 @@
           <div class="page-content">
             <div class="section-header">
               <h2 class="section-title">
-                About <span class="gradient-text">Me</span>
+                <span data-i18n="aboutTitle">About</span> <span class="gradient-text" data-i18n="aboutTitleHighlight">Me</span>
               </h2>
               <div class="title-underline"></div>
             </div>
@@ -510,12 +510,12 @@
             <div class="skills-content">
               <!-- D3.js Skills Radar Chart -->
               <div class="skills-visualization">
-                <h3 class="category-title">Skills Overview</h3>
+                <h3 class="category-title" data-i18n="skillsRadarTitle">Skill Proficiency</h3>
                 <div id="skillsRadarChart" class="d3-chart-container"></div>
               </div>
 
               <div class="skills-category">
-                <h3 class="category-title">Frontend</h3>
+                <h3 class="category-title" data-i18n="skillsCategoryFrontend">Frontend</h3>
                 <div class="skills-grid">
                   <div class="skill-card" data-skill="95">
                     <div class="skill-icon">
@@ -577,7 +577,7 @@
                 </div>
               </div>
               <div class="skills-category">
-                <h3 class="category-title">Backend</h3>
+                <h3 class="category-title" data-i18n="skillsCategoryBackend">Backend</h3>
                 <div class="skills-grid">
                   <div class="skill-card" data-skill="88">
                     <div class="skill-icon">
@@ -635,7 +635,7 @@
                 </div>
               </div>
               <div class="skills-category">
-                <h3 class="category-title">Tools & Others</h3>
+                <h3 class="category-title" data-i18n="skillsCategoryTools">Tools & Others</h3>
                 <div class="tech-tags">
                   <span class="tech-tag">Git</span>
                   <span class="tech-tag">Docker</span>
@@ -650,7 +650,7 @@
 
               <!-- D3.js Technology Network Graph -->
               <div class="skills-visualization">
-                <h3 class="category-title">Technology Ecosystem</h3>
+                <h3 class="category-title" data-i18n="skillsVisualization">Technology Ecosystem</h3>
                 <div id="techNetworkGraph" class="d3-chart-container"></div>
               </div>
             </div>
@@ -662,20 +662,14 @@
           <div class="page-content">
             <div class="section-header">
               <h2 class="section-title">
-                Featured <span class="gradient-text">Projects</span>
+                <span data-i18n="projectsTitle">Featured</span> <span class="gradient-text" data-i18n="projectsTitleHighlight">Projects</span>
               </h2>
               <div class="title-underline"></div>
             </div>
 
             <!-- D3.js Project Timeline Visualization -->
             <div class="project-timeline-viz">
-              <h3 class="timeline-title">Development Journey</h3>
-              <div id="projectTimeline" class="d3-chart-container"></div>
-            </div>
-
-            <!-- D3.js Project Timeline Visualization -->
-            <div class="project-timeline-viz">
-              <h3 class="timeline-title">Project Timeline</h3>
+              <h3 class="timeline-title" data-i18n="projectTimelineTitle">Development Journey</h3>
               <div id="projectTimeline" class="d3-chart-container"></div>
             </div>
 
@@ -731,14 +725,14 @@
                     />
                   </svg>
                   <div class="project-overlay">
-                    <button class="btn-view" data-project="ecommerce">
+                    <button class="btn-view" data-project="ecommerce" data-i18n="projectViewDetails">
                       View Details
                     </button>
                   </div>
                 </div>
                 <div class="project-info">
-                  <h3 class="project-title">E-Commerce Platform</h3>
-                  <p class="project-description">
+                  <h3 class="project-title" data-i18n="project1Title">E-Commerce Platform</h3>
+                  <p class="project-description" data-i18n="project1Description">
                     Full-stack e-commerce solution with real-time inventory and
                     payment processing
                   </p>
@@ -778,16 +772,15 @@
                     />
                   </svg>
                   <div class="project-overlay">
-                    <button class="btn-view" data-project="ai-dashboard">
+                    <button class="btn-view" data-project="ai-dashboard" data-i18n="projectViewDetails">
                       View Details
                     </button>
                   </div>
                 </div>
                 <div class="project-info">
-                  <h3 class="project-title">AI Analytics Dashboard</h3>
-                  <p class="project-description">
-                    Real-time data visualization platform with ML-powered
-                    insights
+                  <h3 class="project-title" data-i18n="project2Title">AI Chat Application</h3>
+                  <p class="project-description" data-i18n="project2Description">
+                    Real-time chat application with AI-powered responses, user authentication, and message encryption.
                   </p>
                   <div class="project-tech">
                     <span class="tech-badge">Next.js</span>
@@ -843,16 +836,15 @@
                     />
                   </svg>
                   <div class="project-overlay">
-                    <button class="btn-view" data-project="social-app">
+                    <button class="btn-view" data-project="social-app" data-i18n="projectViewDetails">
                       View Details
                     </button>
                   </div>
                 </div>
                 <div class="project-info">
-                  <h3 class="project-title">Social Media App</h3>
-                  <p class="project-description">
-                    Real-time social networking platform with live messaging and
-                    notifications
+                  <h3 class="project-title" data-i18n="project3Title">Task Management System</h3>
+                  <p class="project-description" data-i18n="project3Description">
+                    Collaborative task management tool with team workspaces, real-time updates, and analytics dashboard.
                   </p>
                   <div class="project-tech">
                     <span class="tech-badge">React Native</span>
@@ -870,16 +862,15 @@
           <div class="page-content">
             <div class="section-header">
               <h2 class="section-title">
-                Get In <span class="gradient-text">Touch</span>
+                <span data-i18n="contactTitle">Get In</span> <span class="gradient-text" data-i18n="contactTitleHighlight">Touch</span>
               </h2>
               <div class="title-underline"></div>
             </div>
             <div class="contact-content">
               <div class="contact-info">
-                <h3>Let's work together</h3>
-                <p>
-                  Have a project in mind? Let's create something amazing
-                  together.
+                <h3 data-i18n="contactInfoTitle">Contact Information</h3>
+                <p data-i18n="contactSubtitle">
+                  Let's work together on your next project
                 </p>
                 <div class="contact-details">
                   <div class="contact-item">
@@ -956,6 +947,7 @@
                   <input
                     type="text"
                     class="form-input"
+                    data-i18n-placeholder="contactFormName"
                     placeholder="Your Name"
                     required
                   />
@@ -965,6 +957,7 @@
                   <input
                     type="email"
                     class="form-input"
+                    data-i18n-placeholder="contactFormEmail"
                     placeholder="Your Email"
                     required
                   />
@@ -983,13 +976,14 @@
                   <textarea
                     class="form-input"
                     rows="5"
+                    data-i18n-placeholder="contactFormMessage"
                     placeholder="Your Message"
                     required
                   ></textarea>
                   <div class="input-border"></div>
                 </div>
                 <button type="submit" class="btn btn-primary btn-submit">
-                  <span class="btn-text">Send Message</span>
+                  <span class="btn-text" data-i18n="contactFormButton">Send Message</span>
                   <svg
                     class="btn-icon"
                     viewBox="0 0 24 24"

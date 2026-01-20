@@ -2636,24 +2636,24 @@ textarea:focus {
   .timeline-label {
     font-size: 10px;
   }
-  
+
   /* Mobile Language Selector */
   .language-selector-wrapper {
     width: 100%;
     margin-top: var(--spacing-sm);
   }
-  
+
   .language-selector-btn {
     width: 100%;
     justify-content: center;
   }
-  
+
   .language-dropdown {
     left: 0;
     right: 0;
     width: 100%;
   }
-  
+
   .nav-menu.active .language-selector-wrapper {
     display: block;
   }
