@@ -437,24 +437,15 @@ updateLanguageFlag();
 // ===================================
 // PAGE NAVIGATION
 // ===================================
-const prevPageBtn = document.getElementById("prevPage");
-const nextPageBtn = document.getElementById("nextPage");
+// Note: Page navigation arrows removed from UI
+// Navigation still available via:
+// - Header navigation buttons
+// - Keyboard arrows (handled in event listener below)
+// - Touch/swipe gestures (handled in event listener below)
 const bookPages = document.querySelectorAll(".book-page");
 
-// Update page navigation buttons
+// Update page navigation
 function updatePageNavigation() {
-  if (currentPage === 0) {
-    prevPageBtn.classList.add("hidden");
-  } else {
-    prevPageBtn.classList.remove("hidden");
-  }
-
-  if (currentPage === totalPages - 1) {
-    nextPageBtn.classList.add("hidden");
-  } else {
-    nextPageBtn.classList.remove("hidden");
-  }
-
   // Update active nav link
   navLinks.forEach((link) => {
     link.classList.remove("active");
@@ -639,16 +630,6 @@ function navigateToPage(pageIndex) {
       );
   }
 }
-
-// Previous page
-prevPageBtn.addEventListener("click", () => {
-  navigateToPage(currentPage - 1);
-});
-
-// Next page
-nextPageBtn.addEventListener("click", () => {
-  navigateToPage(currentPage + 1);
-});
 
 // Hero button navigation
 document.querySelectorAll("[data-navigate]").forEach((btn) => {
