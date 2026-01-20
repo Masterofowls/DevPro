@@ -175,6 +175,9 @@ function initializeAnimations() {
 
   // Initialize project modal
   initProjectModal();
+  
+  // Ensure translations are applied after splash screen
+  synchronizeTranslations();
 }
 
 // Old preloader code removed
@@ -317,6 +320,31 @@ if (typeof initializeLanguageSystem === "function") {
   initializeLanguageSystem();
 }
 
+// Synchronize translations across all pages
+function synchronizeTranslations() {
+  if (typeof updateTranslations === "function") {
+    updateTranslations();
+  }
+}
+
+// Listen for language changes and update all pages
+window.addEventListener("languageChanged", () => {
+  synchronizeTranslations();
+  
+  // Re-animate current page content with new language
+  const currentPageEl = bookPages[currentPage];
+  if (currentPageEl) {
+    anime({
+      targets: currentPageEl.querySelectorAll(".section-title, .hero-title, .project-title, .category-title"),
+      opacity: [0.5, 1],
+      translateY: [-5, 0],
+      duration: 400,
+      delay: anime.stagger(50),
+      easing: "easeOutQuad",
+    });
+  }
+});
+
 // Update flag display
 function updateLanguageFlag() {
   const currentLang = getCurrentLanguage();
@@ -388,7 +416,7 @@ languageOptions.forEach((option) => {
         setLanguage(selectedLang);
         updateLanguageFlag();
         languageDropdown.classList.remove("active");
-        
+
         // Fade back in
         anime({
           targets: "[data-i18n], [data-i18n-placeholder]",
@@ -486,6 +514,9 @@ function navigateToPage(pageIndex) {
       currentPage = pageIndex;
       updatePageNavigation();
       animatePageContent(pageIndex);
+      
+      // Ensure translations are synchronized on new page
+      synchronizeTranslations();
     },
   });
 
@@ -1889,6 +1920,7 @@ if ("serviceWorker" in navigator) {
         // Initialize translations after service worker registration
         if (typeof initializeLanguageSystem === "function") {
           initializeLanguageSystem();
+          synchronizeTranslations();
         }
 
         // Check for updates
@@ -1922,3 +1954,20 @@ if ("serviceWorker" in navigator) {
     }
   });
 }
+
+// ===================================
+// ENSURE TRANSLATIONS ON LOAD
+// ===================================
+document.addEventListener("DOMContentLoaded", () => {
+  // Final synchronization on DOM ready
+  if (typeof synchronizeTranslations === "function") {
+    synchronizeTranslations();
+  }
+});
+
+// Also synchronize when page becomes visible (tab switching)
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && typeof synchronizeTranslations === "function") {
+    synchronizeTranslations();
+  }
+});
