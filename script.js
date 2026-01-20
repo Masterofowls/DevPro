@@ -5,6 +5,24 @@ let currentPage = 0;
 const totalPages = 5;
 let isAnimating = false;
 
+// URL Route Configuration
+const routes = {
+  0: { path: '/DevPro/', name: 'home' },
+  1: { path: '/DevPro/about', name: 'about' },
+  2: { path: '/DevPro/skills', name: 'skills' },
+  3: { path: '/DevPro/projects', name: 'projects' },
+  4: { path: '/DevPro/contact', name: 'contact' }
+};
+
+const pathToPage = {
+  '/DevPro/': 0,
+  '/DevPro/home': 0,
+  '/DevPro/about': 1,
+  '/DevPro/skills': 2,
+  '/DevPro/projects': 3,
+  '/DevPro/contact': 4
+};
+
 // Mobile detection for performance optimization
 const isMobile =
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -444,7 +462,7 @@ updateLanguageFlag();
 // - Touch/swipe gestures (handled in event listener below)
 const bookPages = document.querySelectorAll(".book-page");
 
-// Update page navigation
+// Update page navigation and URL
 function updatePageNavigation() {
   // Update active nav link
   navLinks.forEach((link) => {
@@ -453,6 +471,39 @@ function updatePageNavigation() {
       link.classList.add("active");
     }
   });
+}
+
+// Update browser URL without page reload
+function updateURL(pageIndex, pushState = true) {
+  const route = routes[pageIndex];
+  if (route && pushState) {
+    const url = route.path;
+    window.history.pushState({ page: pageIndex }, '', url);
+    // Update document title
+    document.title = `${route.name.charAt(0).toUpperCase() + route.name.slice(1)} - Portfolio`;
+  }
+}
+
+// Get page index from current URL
+function getPageFromURL() {
+  // Check for redirect from 404.html
+  const hash = window.location.hash;
+  if (hash.startsWith('#redirect=')) {
+    const redirectPath = hash.substring(10); // Remove '#redirect='
+    const pageIndex = pathToPage[redirectPath];
+    if (pageIndex !== undefined) {
+      // Clean up the hash
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      return pageIndex;
+    }
+  }
+  
+  const path = window.location.pathname;
+  // Handle both /DevPro/ and /DevPro/index.html
+  if (path === '/DevPro/index.html' || path === '/DevPro') {
+    return 0;
+  }
+  return pathToPage[path] !== undefined ? pathToPage[path] : 0;
 }
 
 // Navigate to specific page with realistic book page turning
@@ -506,6 +557,7 @@ function navigateToPage(pageIndex) {
       isAnimating = false;
       currentPage = pageIndex;
       updatePageNavigation();
+      updateURL(pageIndex, true);
       animatePageContent(pageIndex);
 
       // Ensure translations are synchronized on new page
@@ -637,6 +689,191 @@ document.querySelectorAll("[data-navigate]").forEach((btn) => {
     const targetPage = parseInt(btn.dataset.navigate);
     navigateToPage(targetPage);
   });
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', (event) => {
+  if (event.state && event.state.page !== undefined) {
+    const pageIndex = event.state.page;
+    // Navigate without pushing new state
+    if (pageIndex !== currentPage && pageIndex >= 0 && pageIndex < totalPages) {
+      // Directly update without pushState
+      const prevCurrentPage = currentPage;
+      currentPage = pageIndex;
+      
+      if (!isAnimating) {
+        isAnimating = true;
+        const currentPageEl = bookPages[prevCurrentPage];
+        const nextPageEl = bookPages[pageIndex];
+        const direction = pageIndex > prevCurrentPage ? "next" : "prev";
+        
+        currentPageEl.style.transform = "";
+        nextPageEl.style.transform = "";
+        currentPageEl.style.opacity = "";
+        nextPageEl.style.opacity = "";
+        currentPageEl.classList.add("page-flipping");
+        currentPageEl.classList.add(direction === "next" ? "flip-next" : "flip-prev");
+        nextPageEl.classList.add("page-behind");
+        
+        const flipTimeline = anime.timeline({
+          easing: "cubicBezier(0.55, 0.085, 0.68, 0.53)",
+          complete: () => {
+            currentPageEl.classList.remove("active", "page-flipping", "flip-next", "flip-prev");
+            nextPageEl.classList.remove("page-behind");
+            currentPageEl.style.transform = "";
+            currentPageEl.style.opacity = "";
+            currentPageEl.style.zIndex = "";
+            nextPageEl.style.transform = "";
+            nextPageEl.style.opacity = "";
+            nextPageEl.style.zIndex = "";
+            isAnimating = false;
+            updatePageNavigation();
+            animatePageContent(pageIndex);
+            synchronizeTranslations();
+          },
+        });
+        
+        const isQuickMode = isMobile || isReducedMotion;
+        const durations = isQuickMode
+          ? { lift: 150, curl1: 300, curl2: 250, settle: 150, fade: 400 }
+          : { lift: 250, curl1: 550, curl2: 450, settle: 250, fade: 800 };
+        
+        if (direction === "next") {
+          flipTimeline
+            .add({
+              targets: currentPageEl,
+              rotateY: [0, 15],
+              translateZ: [0, 30],
+              transformOrigin: "100% 50%",
+              duration: durations.lift,
+              easing: "easeOutQuad",
+              begin: () => {
+                nextPageEl.style.zIndex = 5;
+                currentPageEl.style.zIndex = 10;
+              },
+            })
+            .add({
+              targets: currentPageEl,
+              rotateY: [15, 90],
+              translateZ: [30, 60],
+              transformOrigin: "100% 50%",
+              duration: durations.curl1,
+              easing: "cubicBezier(0.45, 0.05, 0.55, 0.95)",
+            })
+            .add({
+              targets: currentPageEl,
+              rotateY: [90, 165],
+              translateZ: [60, 30],
+              transformOrigin: "100% 50%",
+              duration: durations.curl2,
+              easing: "cubicBezier(0.45, 0.05, 0.55, 0.95)",
+            })
+            .add({
+              targets: currentPageEl,
+              rotateY: [165, 180],
+              translateZ: [30, 0],
+              transformOrigin: "100% 50%",
+              duration: durations.settle,
+              easing: "easeInQuad",
+            })
+            .add(
+              {
+                targets: nextPageEl,
+                opacity: [0, 1],
+                scale: [0.96, 1],
+                translateZ: [-10, 0],
+                duration: durations.fade,
+                easing: "easeOutCubic",
+                begin: () => {
+                  nextPageEl.classList.add("active");
+                },
+              },
+              isQuickMode ? "-=500" : "-=900",
+            );
+        } else {
+          flipTimeline
+            .add({
+              targets: currentPageEl,
+              rotateY: [0, -15],
+              translateZ: [0, 30],
+              transformOrigin: "0% 50%",
+              duration: durations.lift,
+              easing: "easeOutQuad",
+              begin: () => {
+                nextPageEl.style.zIndex = 5;
+                currentPageEl.style.zIndex = 10;
+                nextPageEl.style.opacity = 0;
+                nextPageEl.style.transform = "scale(0.96) translateZ(-10px)";
+              },
+            })
+            .add({
+              targets: currentPageEl,
+              rotateY: [-15, -90],
+              translateZ: [30, 60],
+              transformOrigin: "0% 50%",
+              duration: durations.curl1,
+              easing: "cubicBezier(0.45, 0.05, 0.55, 0.95)",
+            })
+            .add({
+              targets: currentPageEl,
+              rotateY: [-90, -165],
+              translateZ: [60, 30],
+              transformOrigin: "0% 50%",
+              duration: durations.curl2,
+              easing: "cubicBezier(0.45, 0.05, 0.55, 0.95)",
+            })
+            .add({
+              targets: currentPageEl,
+              rotateY: [-165, -180],
+              translateZ: [30, 0],
+              transformOrigin: "0% 50%",
+              duration: durations.settle,
+              easing: "easeInQuad",
+            })
+            .add(
+              {
+                targets: nextPageEl,
+                opacity: [0, 1],
+                scale: [0.96, 1],
+                translateZ: [-10, 0],
+                rotateY: [0, 0],
+                duration: durations.fade,
+                easing: "easeOutCubic",
+                begin: () => {
+                  nextPageEl.classList.add("active");
+                },
+              },
+              isQuickMode ? "-=500" : "-=900",
+            );
+        }
+      }
+    }
+  } else {
+    // No state, check URL
+    const pageFromURL = getPageFromURL();
+    if (pageFromURL !== currentPage) {
+      navigateToPage(pageFromURL);
+    }
+  }
+});
+
+// Handle initial page load based on URL
+window.addEventListener('DOMContentLoaded', () => {
+  const initialPage = getPageFromURL();
+  if (initialPage !== 0) {
+    currentPage = initialPage;
+    bookPages.forEach((page, index) => {
+      page.classList.remove('active');
+      if (index === initialPage) {
+        page.classList.add('active');
+      }
+    });
+    updatePageNavigation();
+    animatePageContent(initialPage);
+  }
+  // Set initial state
+  window.history.replaceState({ page: currentPage }, '', routes[currentPage].path);
+  document.title = `${routes[currentPage].name.charAt(0).toUpperCase() + routes[currentPage].name.slice(1)} - Portfolio`;
 });
 
 // Keyboard navigation

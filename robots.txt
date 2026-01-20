@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://masterofowls.github.io/DevPro/sitemap.xml
 
 # Disallow unnecessary paths
 Disallow: /fonts/
