@@ -1,0 +1,47 @@
+{
+  "name": "devpro-portfolio",
+  "version": "1.0.0",
+  "description": "Advanced fullstack developer portfolio with interactive picture book design, SVG animations, and modern web technologies",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s . -l 3000",
+    "dev": "npx live-server --port=3000 --open=index.html",
+    "build": "echo 'No build process needed for static site'",
+    "lint": "echo 'Linting HTML, CSS, and JS files'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "portfolio",
+    "fullstack",
+    "developer",
+    "interactive",
+    "animations",
+    "anime.js",
+    "svg",
+    "pwa",
+    "responsive",
+    "modern-web"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/devpro-portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/devpro-portfolio/issues"
+  },
+  "homepage": "https://yourwebsite.com",
+  "devDependencies": {},
+  "dependencies": {
+    "animejs": "^3.2.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

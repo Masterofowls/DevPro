@@ -1,0 +1,133 @@
+/* ===================================
+   NERD FONTS LOCAL DECLARATIONS
+   =================================== */
+
+/* JetBrains Mono Nerd Font - Display Font */
+@font-face {
+  font-family: "JetBrains Mono Nerd Font";
+  src: url("fonts/JetBrainsMono/JetBrainsMonoNerdFont-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Nerd Font";
+  src: url("fonts/JetBrainsMono/JetBrainsMonoNerdFont-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Nerd Font";
+  src: url("fonts/JetBrainsMono/JetBrainsMonoNerdFont-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Nerd Font";
+  src: url("fonts/JetBrainsMono/JetBrainsMonoNerdFont-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Nerd Font";
+  src: url("fonts/JetBrainsMono/JetBrainsMonoNerdFont-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono Nerd Font";
+  src: url("fonts/JetBrainsMono/JetBrainsMonoNerdFont-ExtraBold.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Space Mono Nerd Font - Primary Font */
+@font-face {
+  font-family: "Space Mono Nerd Font";
+  src: url("fonts/SpaceMono/SpaceMonoNerdFont-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono Nerd Font";
+  src: url("fonts/SpaceMono/SpaceMonoNerdFont-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono Nerd Font";
+  src: url("fonts/SpaceMono/SpaceMonoNerdFont-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Mono Nerd Font";
+  src: url("fonts/SpaceMono/SpaceMonoNerdFont-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Fira Code Nerd Font - Code Font */
+@font-face {
+  font-family: "Fira Code Nerd Font";
+  src: url("fonts/FiraCode/FiraCodeNerdFont-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Code Nerd Font";
+  src: url("fonts/FiraCode/FiraCodeNerdFont-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Code Nerd Font";
+  src: url("fonts/FiraCode/FiraCodeNerdFont-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Code Nerd Font";
+  src: url("fonts/FiraCode/FiraCodeNerdFont-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fira Code Nerd Font";
+  src: url("fonts/FiraCode/FiraCodeNerdFont-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
