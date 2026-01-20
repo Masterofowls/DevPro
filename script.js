@@ -1199,31 +1199,8 @@ if (bookContainer) {
     return false;
   }
 
-  // Optimized wheel event with better throttling and scroll detection
-  bookContainer.addEventListener(
-    "wheel",
-    (e) => {
-      // Allow scrolling within scrollable elements
-      if (isScrollableElement(e.target)) {
-        return;
-      }
-
-      if (isScrolling) return;
-
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const direction = e.deltaY > 0 ? 1 : -1;
-        if (Math.abs(e.deltaY) > 50) {
-          isScrolling = true;
-          navigateToPage(currentPage + direction);
-          setTimeout(() => {
-            isScrolling = false;
-          }, 800);
-        }
-      }, 100);
-    },
-    { passive: true },
-  );
+  // Wheel/scroll navigation disabled - only swipe gestures navigate pages
+  // Users can now freely scroll content without triggering page transitions
 
   // Touch swipe support for mobile
   let touchStartElement = null;
