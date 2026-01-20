@@ -539,6 +539,127 @@ body::before {
 }
 
 /* ===================================
+   LANGUAGE SELECTOR
+   =================================== */
+.language-selector-wrapper {
+  position: relative;
+}
+
+.language-selector-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  transition: all var(--transition-medium);
+  font-size: 0.9rem;
+}
+
+.language-selector-btn:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 245, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.language-flag {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.language-chevron {
+  transition: transform var(--transition-fast);
+}
+
+.language-selector-btn:hover .language-chevron {
+  transform: translateY(2px);
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 180px;
+  max-height: 400px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-medium);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.language-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.language-option:hover {
+  background: rgba(0, 245, 255, 0.1);
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.language-option.active {
+  background: rgba(0, 245, 255, 0.15);
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* RTL Support */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] .nav-menu {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero-content {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .language-dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .language-option:hover {
+  transform: translateX(-4px);
+}
+
+html[dir="rtl"] .nav-link::after {
+  right: auto;
+  left: 0;
+}
+
+/* ===================================
    BOOK CONTAINER - ENHANCED 3D EFFECTS
    =================================== */
 .book-container {
@@ -2514,5 +2635,26 @@ textarea:focus {
   .network-node text,
   .timeline-label {
     font-size: 10px;
+  }
+  
+  /* Mobile Language Selector */
+  .language-selector-wrapper {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+  
+  .language-selector-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .language-dropdown {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  
+  .nav-menu.active .language-selector-wrapper {
+    display: block;
   }
 }

@@ -305,6 +305,98 @@ function animateNavbar() {
 }
 
 // ===================================
+// LANGUAGE SWITCHING SYSTEM
+// ===================================
+const languageBtn = document.getElementById("languageBtn");
+const languageDropdown = document.getElementById("languageDropdown");
+const currentFlag = document.getElementById("currentFlag");
+const languageOptions = document.querySelectorAll(".language-option");
+
+// Initialize language system
+if (typeof initializeLanguageSystem === "function") {
+  initializeLanguageSystem();
+}
+
+// Update flag display
+function updateLanguageFlag() {
+  const currentLang = getCurrentLanguage();
+  const flagMap = {
+    en: "🇬🇧",
+    ru: "🇷🇺",
+    de: "🇩🇪",
+    fr: "🇫🇷",
+    es: "🇪🇸",
+    pt: "🇵🇹",
+    ar: "🇸🇦",
+    zh: "🇨🇳",
+    ja: "🇯🇵",
+    hi: "🇮🇳",
+  };
+  currentFlag.textContent = flagMap[currentLang] || "🇬🇧";
+
+  // Update active state in dropdown
+  languageOptions.forEach((opt) => {
+    if (opt.dataset.lang === currentLang) {
+      opt.classList.add("active");
+    } else {
+      opt.classList.remove("active");
+    }
+  });
+}
+
+// Toggle language dropdown
+languageBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  languageDropdown.classList.toggle("active");
+
+  // Animate dropdown
+  if (languageDropdown.classList.contains("active")) {
+    anime({
+      targets: ".language-option",
+      translateY: [-10, 0],
+      opacity: [0, 1],
+      delay: anime.stagger(30),
+      duration: 300,
+      easing: "easeOutQuad",
+    });
+  }
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+  if (
+    !languageBtn?.contains(e.target) &&
+    !languageDropdown?.contains(e.target)
+  ) {
+    languageDropdown?.classList.remove("active");
+  }
+});
+
+// Language selection
+languageOptions.forEach((option) => {
+  option.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const selectedLang = option.dataset.lang;
+
+    // Animate language change
+    anime({
+      targets: "[data-i18n]",
+      opacity: [1, 0.3, 1],
+      duration: 400,
+      easing: "easeInOutQuad",
+      complete: () => {
+        setLanguage(selectedLang);
+        updateLanguageFlag();
+        languageDropdown.classList.remove("active");
+      },
+    });
+  });
+});
+
+// Initialize flag display
+updateLanguageFlag();
+
+// ===================================
 // PAGE NAVIGATION
 // ===================================
 const prevPageBtn = document.getElementById("prevPage");
@@ -1785,6 +1877,11 @@ if ("serviceWorker" in navigator) {
           "✅ Service Worker registered successfully:",
           registration.scope,
         );
+
+        // Initialize translations after service worker registration
+        if (typeof initializeLanguageSystem === 'function') {
+          initializeLanguageSystem();
+        }
 
         // Check for updates
         registration.addEventListener("updatefound", () => {

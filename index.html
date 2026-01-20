@@ -58,6 +58,9 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Translation System -->
+    <script src="translations.js"></script>
   </head>
   <body>
     <!-- Enhanced Splash Screen -->
@@ -181,16 +184,72 @@
             <a href="#home" class="nav-link active" data-page="0">Home</a>
           </li>
           <li class="nav-item">
-            <a href="#about" class="nav-link" data-page="1">About</a>
+            <a href="#about" class="nav-link" data-page="1" data-i18n="navAbout"
+              >About</a
+            >
           </li>
           <li class="nav-item">
-            <a href="#skills" class="nav-link" data-page="2">Skills</a>
+            <a
+              href="#skills"
+              class="nav-link"
+              data-page="2"
+              data-i18n="navSkills"
+              >Skills</a
+            >
           </li>
           <li class="nav-item">
-            <a href="#projects" class="nav-link" data-page="3">Projects</a>
+            <a
+              href="#projects"
+              class="nav-link"
+              data-page="3"
+              data-i18n="navProjects"
+              >Projects</a
+            >
           </li>
           <li class="nav-item">
-            <a href="#contact" class="nav-link" data-page="4">Contact</a>
+            <a
+              href="#contact"
+              class="nav-link"
+              data-page="4"
+              data-i18n="navContact"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item language-selector-wrapper">
+            <button
+              class="language-selector-btn"
+              id="languageBtn"
+              title="Change Language"
+            >
+              <span class="language-flag" id="currentFlag">🇬🇧</span>
+              <svg
+                class="language-chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="3 4.5 6 7.5 9 4.5"></polyline>
+              </svg>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+              <button class="language-option" data-lang="en">🇬🇧 English</button>
+              <button class="language-option" data-lang="ru">🇷🇺 Русский</button>
+              <button class="language-option" data-lang="de">🇩🇪 Deutsch</button>
+              <button class="language-option" data-lang="fr">
+                🇫🇷 Français
+              </button>
+              <button class="language-option" data-lang="es">🇪🇸 Español</button>
+              <button class="language-option" data-lang="pt">
+                🇵🇹 Português
+              </button>
+              <button class="language-option" data-lang="ar">🇸🇦 العربية</button>
+              <button class="language-option" data-lang="zh">🇨🇳 中文</button>
+              <button class="language-option" data-lang="ja">🇯🇵 日本語</button>
+              <button class="language-option" data-lang="hi">🇮🇳 हिन्दी</button>
+            </div>
           </li>
         </ul>
         <div class="nav-toggle" id="navToggle">
@@ -233,18 +292,32 @@
             <div class="hero-content">
               <div class="hero-text">
                 <h1 class="hero-title">
-                  <span class="title-line">Creative</span>
-                  <span class="title-line">Fullstack</span>
-                  <span class="title-line gradient-text">Developer</span>
+                  <span class="title-line" data-i18n="heroTitle1"
+                    >Creative</span
+                  >
+                  <span class="title-line" data-i18n="heroTitle2"
+                    >Fullstack</span
+                  >
+                  <span class="title-line gradient-text" data-i18n="heroTitle3"
+                    >Developer</span
+                  >
                 </h1>
-                <p class="hero-subtitle">
+                <p class="hero-subtitle" data-i18n="heroSubtitle">
                   Crafting digital experiences with code & creativity
                 </p>
                 <div class="hero-buttons">
-                  <button class="btn btn-primary" data-navigate="4">
+                  <button
+                    class="btn btn-primary"
+                    data-navigate="4"
+                    data-i18n="heroButtonPrimary"
+                  >
                     Get In Touch
                   </button>
-                  <button class="btn btn-secondary" data-navigate="3">
+                  <button
+                    class="btn btn-secondary"
+                    data-navigate="3"
+                    data-i18n="heroButtonSecondary"
+                  >
                     View Projects
                   </button>
                 </div>
@@ -344,7 +417,7 @@
               <div class="mouse">
                 <div class="wheel"></div>
               </div>
-              <p>Scroll to explore</p>
+              <p data-i18n="scrollIndicator">Scroll to explore</p>
             </div>
           </div>
         </section>
