@@ -175,7 +175,7 @@ function initializeAnimations() {
 
   // Initialize project modal
   initProjectModal();
-  
+
   // Ensure translations are applied after splash screen
   synchronizeTranslations();
 }
@@ -330,12 +330,14 @@ function synchronizeTranslations() {
 // Listen for language changes and update all pages
 window.addEventListener("languageChanged", () => {
   synchronizeTranslations();
-  
+
   // Re-animate current page content with new language
   const currentPageEl = bookPages[currentPage];
   if (currentPageEl) {
     anime({
-      targets: currentPageEl.querySelectorAll(".section-title, .hero-title, .project-title, .category-title"),
+      targets: currentPageEl.querySelectorAll(
+        ".section-title, .hero-title, .project-title, .category-title",
+      ),
       opacity: [0.5, 1],
       translateY: [-5, 0],
       duration: 400,
@@ -514,7 +516,7 @@ function navigateToPage(pageIndex) {
       currentPage = pageIndex;
       updatePageNavigation();
       animatePageContent(pageIndex);
-      
+
       // Ensure translations are synchronized on new page
       synchronizeTranslations();
     },
@@ -949,27 +951,9 @@ contactForm.addEventListener("submit", (e) => {
 });
 
 // ===================================
-// SMOOTH SCROLL FOR MOUSE WHEEL
+// SCROLL NAVIGATION DISABLED
+// Pages switch only via manual triggers (buttons, keyboard, clicks)
 // ===================================
-let scrollTimeout;
-
-window.addEventListener(
-  "wheel",
-  (e) => {
-    clearTimeout(scrollTimeout);
-
-    scrollTimeout = setTimeout(() => {
-      if (e.deltaY > 0) {
-        // Scroll down - next page
-        navigateToPage(currentPage + 1);
-      } else if (e.deltaY < 0) {
-        // Scroll up - previous page
-        navigateToPage(currentPage - 1);
-      }
-    }, 100);
-  },
-  { passive: true },
-);
 
 // ===================================
 // INTERSECTION OBSERVER FOR ANIMATIONS

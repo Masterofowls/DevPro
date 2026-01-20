@@ -683,6 +683,7 @@ html[dir="rtl"] .nav-link::after {
   top: 0;
   left: 0;
   width: 100%;
+  height: calc(100vh - 80px);
   min-height: calc(100vh - 80px);
   opacity: 0;
   visibility: hidden;
@@ -702,6 +703,7 @@ html[dir="rtl"] .nav-link::after {
     inset 0 0 40px rgba(0, 245, 255, 0.03);
   border: 1px solid rgba(0, 245, 255, 0.15);
   border-radius: 2px;
+  overflow: hidden;
 }
 
 .book-page::before {
@@ -799,8 +801,8 @@ html[dir="rtl"] .nav-link::after {
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--spacing-lg) var(--spacing-md);
-  min-height: calc(100vh - 80px);
-  max-height: calc(100vh - 80px);
+  min-height: calc(100vh - 120px);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -808,6 +810,7 @@ html[dir="rtl"] .nav-link::after {
   animation: pageContentFadeIn 0.6s ease 0.3s both;
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 @keyframes pageContentFadeIn {
@@ -925,7 +928,8 @@ html[dir="rtl"] .nav-link::after {
    =================================== */
 .section-header {
   text-align: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-md);
   animation: fadeInUp 0.8s ease;
 }
 
@@ -1109,6 +1113,8 @@ html[dir="rtl"] .nav-link::after {
   gap: var(--spacing-xl);
   align-items: center;
   animation: fadeInUp 1s ease;
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
 }
 
 .hero-text h1 {
@@ -1304,6 +1310,8 @@ html[dir="rtl"] .nav-link::after {
   grid-template-columns: 1fr 1.5fr;
   gap: var(--spacing-xl);
   align-items: center;
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
 }
 
 .about-image {
@@ -1393,6 +1401,8 @@ html[dir="rtl"] .nav-link::after {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
 }
 
 .skills-category {
@@ -1596,6 +1606,9 @@ html[dir="rtl"] .nav-link::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--spacing-lg);
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
+  margin-top: var(--spacing-md);
 }
 
 .project-card {
@@ -1721,6 +1734,8 @@ html[dir="rtl"] .nav-link::after {
   grid-template-columns: 1fr 1.5fr;
   gap: var(--spacing-xl);
   align-items: start;
+  width: 100%;
+  padding-bottom: var(--spacing-xl);
 }
 
 .contact-info h3 {
