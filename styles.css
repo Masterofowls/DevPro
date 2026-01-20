@@ -1277,12 +1277,14 @@ html[dir="rtl"] .nav-link::after {
   align-items: start;
   width: 100%;
   padding-bottom: var(--spacing-xl);
+  overflow: visible;
 }
 
 .skills-main {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  overflow: visible;
 }
 
 .skills-category {
@@ -1489,12 +1491,14 @@ html[dir="rtl"] .nav-link::after {
   align-items: start;
   width: 100%;
   padding-bottom: var(--spacing-xl);
+  overflow: visible;
 }
 
 .projects-main {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  overflow: visible;
 }
 
 .projects-grid {
@@ -2333,7 +2337,7 @@ textarea:focus {
   padding: var(--spacing-md);
   margin: var(--spacing-lg) 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .d3-chart-container::before {
@@ -2352,6 +2356,7 @@ textarea:focus {
 .project-timeline-viz {
   margin: var(--spacing-lg) 0;
   text-align: center;
+  overflow: visible;
 }
 
 .timeline-title,
